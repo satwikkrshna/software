@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page | FCRS</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap">
+    <link rel="stylesheet" href="../static/style.clock.css">
+    <link rel="stylesheet" href="../static/style.navbar.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav>
+            <input type="checkbox" id="show-search">
+            <input type="checkbox" id="show-menu">
+            <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+            <div class="content">
+                <div class="logo"><img src="../static/logo.png"><a>FCRS</a></div>
+                <ul class="links">
+                    <li><a href="./home.html">Home</a></li>
+                    <li><a href="./booking_history.html">Booking History</a></li>
+                    <li><a href="./contact.html">Contact Us</a></li>
+                    <li><a href="./faq.html">FAQ's</a></li>
+                    <li><a href="./login.html">Sign Out</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <form action="/booking-details" method="post">
+        <div class="form">
+            <div class="cover">
+                <h1>00:00:00 PM</h1>
+                <div class="fill">
+                    <div class="column">
+                        <select name="hour" required>
+                            <option value="Hour" selected disabled hidden>Hour</option>
+                        </select>
+                    </div>
+                    <div class="column">
+                        <select name="minute" required>
+                            <option value="Minute" selected disabled hidden>Minute</option>
+                        </select>
+                    </div>
+                    <div class="column">
+                        <select name="AMPM" required>
+                            <option value="AM/PM" selected disabled hidden>AM/PM</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <input type="date" name="date" required>
+            <div class="search">
+                <input type="text" placeholder="From..." name="from" required>
+                <input type="text" placeholder="To..." name="to" required>
+                <input type="number" hidden id="date1" name="date1" value="1">
+                <input type="number" hidden id="month" name="month" value="1">
+                <input type="number" hidden id="year" name="year" value="1">
+            </div>
+            <a type="submit" href=""><input type="submit" value="Get a Ride" class="btn"></a>
+        </div>
+    </form>
+    <script src="../static/script.clock.js"></script>
+    <script src="../static/script.js"></script>
+    <script>
+        document.getElementById("date1").setAttribute("value", new Date().getDate());
+        document.getElementById("month").setAttribute("value", new Date().getMonth() + 1);
+        document.getElementById("year").setAttribute("value", new Date().getFullYear());
+    </script>
+</body>
+
+</html>

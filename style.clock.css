@@ -1,0 +1,176 @@
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background: radial-gradient(#f00, rgba(0, 0, 0, 0.5));
+    background: url(wall.jpg);
+    background-size: cover;
+    background-blend-mode: multiply;
+    animation: animateBgColor 5s linear infinite;
+}
+
+.cover,
+.fill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="date"] {
+    background-color: #dc6b0e;
+    padding: 15px;
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: -100px;
+    left: 850px;
+    font-family: "Roboto Mono", monospace;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+}
+
+::-webkit-calendar-picker-indicator {
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.box {
+    top: 250px;
+    width: 600px;
+    height: 200px;
+    text-align: center;
+}
+
+.form {
+    min-width: 600px;
+    min-height: 500px;
+    background-image: #fff;
+    background-size: cover;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: 100px;
+    left: 75px;
+    transform: translate(0%, -5%);
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.cover {
+    position: relative;
+    width: 600px;
+    height: 170px;
+    left: 75px;
+    padding: 30px 30px 38px;
+    background: #fff;
+    border-radius: 10px;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.cover img {
+    max-width: 103px;
+}
+
+.cover h1 {
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0;
+}
+
+.cover .fill {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.fill.disable {
+    cursor: no-drop;
+}
+
+.fill .column {
+    position: relative;
+    min-width: 70px;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #bca1a1;
+    width: calc(100% / 3 - 5px);
+}
+
+.fill.disable .column {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.column select {
+    width: 100%;
+    height: 53px;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 19px;
+}
+
+.search {
+    position: relative;
+    width: 1000px;
+    max-width: 1500px;
+    height: 80px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    outline: #fff;
+    padding: 30px 40px;
+    overflow: hidden;
+}
+
+.search input {
+    background: rgb(210, 195, 195);
+    background-size: cover;
+    flex: 1;
+    border: 0;
+    border-radius: 50px;
+    outline: none;
+    padding: 20px 24px;
+    font-size: 20px;
+    color: #918fc5;
+}
+
+::placeholder {
+    color: #918fc5;
+}
+
+.btn {
+    padding: 5px 15px;
+    cursor: pointer;
+    top: 430px;
+    left: 750px;
+    position: absolute;
+    align-items: center;
+    width: 250px;
+    height: 60px;
+    color: rgb(197, 189, 189);
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 0 0 0 rgba(64, 55, 55, 0.5);
+    background: linear-gradient(to right, rgb(194, 88, 12), rgb(194, 49, 20));
+    border-radius: 25px;
+    transition: 0.5s;
+}
+
+.btn:focus {
+    box-shadow: 0 0 0 100px rgba(63, 59, 59, 0.5);
+}

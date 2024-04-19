@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Vehicles | FCRS</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.hist.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.navbar.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav>
+            <input type="checkbox" id="show-search">
+            <input type="checkbox" id="show-menu">
+            <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+            <div class="content">
+                <div class="logo"><img src="../static/logo.png"><a>FCRS</a></div>
+                <ul class="links">
+                    <li><a href="./admin_index.html">Dashboard</a></li>
+                    <li><a href="./manage_bookings.html">Manage Bookings</a></li>
+                    <li><a href="./manage_vehicles.html">Manage Vehicles</a></li>
+                    <li><a href="./login.html">Sign Out</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="main">
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Manage Vehicles</h2>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Vehicle Name</td>
+                                <td>Price per Km</td>
+                                <td>Quantity</td>
+                                <td>Number of seats</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for vehicle in vehicles %}
+                            <form action="/manage-vehicles" method="POST">
+                                <tr>
+                                    <td><input type="text" name="name" value="{{ vehicle['vehicle_name'] }}"></td>
+                                    <td><input type="number" name="pkm" value="{{ vehicle['pkm'] }}"></td>
+                                    <td><input type="number" name="quantity" value="{{ vehicle['quantity'] }}"></td>
+                                    <td><input type="number" name="seats" value="{{ vehicle['seats'] }}"></td>
+                                    <input type="text" name="vehicle_id" value="{{ vehicle['vehicle_id'] }}" hidden>
+                                    <td><input type="submit" value="Update"></td>
+                                </tr>
+                            </form>
+                            {% endfor %}
+                            <form action="/manage-vehicles" method="POST">
+                                <tr>
+                                    <td><input type="text" name="name"></td>
+                                    <td><input type="number" name="pkm"></td>
+                                    <td><input type="number" name="quantity"></td>
+                                    <td><input type="number" name="seats"></td>
+                                    <input type="text" name="vehicle_id" value="None" hidden>
+                                    <td><input type="submit" value="Add"></td>
+                                </tr>
+                            </form>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        let toggle = document.querySelector('.toggle');
+        let navigation = document.querySelector('.navigation');
+        let main = document.querySelector('.main');
+        toggle.onclick = function () {
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+        let list = document.querySelectorAll('.navigation li');
+        function activeLink() {
+            list.forEach((item) =>
+                item.classList.remove('hovered'));
+            this.classList.add('hovered');
+        }
+        list.forEach((item) =>
+            item.addEventListener('mouseover', activeLink));
+    </script>
+</body>
+
+</html>

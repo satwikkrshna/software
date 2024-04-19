@@ -1,0 +1,73 @@
+.main {
+    width: 100%;
+    background: url("image.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.cont {
+    width: 1200px;
+    height: auto;
+    top: 80px;
+    color: #fff;
+    position: absolute;
+    z-index: 1;
+}
+
+.cont .par {
+    padding-left: 20px;
+    padding-bottom: 25px;
+    font-family: Arial;
+    letter-spacing: 1.2px;
+    line-height: 30px;
+}
+
+.cont h1 {
+    font-family: 'Times New Roman';
+    font-size: 50px;
+    padding-left: 20px;
+    letter-spacing: 2px;
+}
+
+.cont .cn {
+    width: 160px;
+    height: 40px;
+    background: #ff7200;
+    border: none;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s ease;
+
+}
+
+.cont .cn a {
+    text-decoration: none;
+    color: #000;
+    transition: .3s ease;
+}
+
+.cn:hover {
+    background-color: #fff;
+}
+
+.cont span {
+    color: #ff7200;
+    font-size: 65px
+}
+
+.form {
+    width: 250px;
+    height: 380px;
+    background-image: url("car.png");
+    background-size: cover;
+    position: absolute;
+    top: 100px;
+    left: 870px;
+    transform: translate(0%, -5%);
+    border-radius: 10px;
+    padding: 25px;
+}

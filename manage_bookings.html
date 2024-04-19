@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Bookings | FCRS</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.navbar.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.list.css">
+</head>
+
+<style>
+    td {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="wrapper">
+        <nav>
+            <input type="checkbox" id="show-search">
+            <input type="checkbox" id="show-menu">
+            <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+            <div class="content">
+                <div class="logo"><img src="../static/logo.png"><a>FCRS</a></div>
+                <ul class="links">
+                    <li><a href="./admin_index.html">Dashboard</a></li>
+                    <li><a href="./manage_bookings.html">Manage Bookings</a></li>
+                    <li><a href="./manage_vehicles.html">Manage Vehicles</a></li>
+                    <li><a href="./login.html">Sign Out</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="main">
+            <div class="cardBox">
+                <div class="details">
+                    <div class="recentOrders">
+                        <div class="cardHeader">
+                            <h2>Recent Orders</h2>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Distance</td>
+                                    <td>Date</td>
+                                    <td>Time</td>
+                                    <td>Vehicle Name</td>
+                                    <td>Payment</td>
+                                    <td>Status</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for booking in booking_invoice %}
+                                <form action="/booking-invoice" method="post">
+                                    <input type="text" name="booking_id" value="{{ booking['booking_id'] }}" hidden>
+                                    <input type="text" name="vehicle_id" value="{{ booking['Vehicle'] }}" hidden>
+                                    <input type="text" name="email" value="{{ booking['email'] }}" hidden>
+                                    <tr>
+                                        <td>{{ booking['name'] }}</td>
+                                        <td><input type="number" name="km"></td>
+                                        <td>{{ booking['Date'] }}</td>
+                                        <td>{{ booking['Time'] }}</td>
+                                        <td>{{ booking['vehicle_name'] }}</td>
+                                        <td style="color:red">Not generated</td>
+                                        <td><input type="submit" value="Generate Invoice"></td>
+                                    </tr>
+                                </form>
+                                {% endfor %}
+                                {% for booking in payment_invoice %}
+                                <form action="/payment-invoice" method="post">
+                                    <input type="text" name="booking_id" value="{{ booking['booking_id'] }}" hidden>
+                                    <input type="text" name="email" value="{{ booking['email'] }}" hidden>
+                                    <input type="text" name="amount" value="{{ booking['Amount to be paid'] }}" hidden>
+                                    <tr>
+                                        <td>{{ booking['name'] }}</td>
+                                        <td>{{ booking['km'] }}</td>
+                                        <td>{{ booking['Date'] }}</td>
+                                        <td>{{ booking['Time'] }}</td>
+                                        <td>{{ booking['vehicle_name'] }}</td>
+                                        <td>{{ booking['Amount to be paid'] }}</td>
+                                        <td><input type="submit" value="Confirm Payment"></td>
+                                    </tr>
+                                </form>
+                                {% endfor %}
+                                {% for booking in paid_invoice %}
+                                <tr>
+                                    <td>{{ booking['name'] }}</td>
+                                    <td>{{ booking['km'] }}</td>
+                                    <td>{{ booking['Date'] }}</td>
+                                    <td>{{ booking['Time'] }}</td>
+                                    <td>{{ booking['vehicle_name'] }}</td>
+                                    <td>{{ booking['Amount to be paid'] }}</td>
+                                    <td style="color: green;">Amount Paid</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

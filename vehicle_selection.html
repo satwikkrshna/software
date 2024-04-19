@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vehicle Selection | FCRS</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.vehicle.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.navbar.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav>
+            <input type="checkbox" id="show-search">
+            <input type="checkbox" id="show-menu">
+            <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+            <div class="content">
+                <div class="logo"><img src="../static/logo.png"><a>FCRS</a></div>
+                <ul class="links">
+                    <li><a href="./home.html">Home</a></li>
+                    <li><a href="./booking_history.html">Booking History</a></li>
+                    <li><a href="./contact.html">Contact Us</a></li>
+                    <li><a href="./faq.html">FAQ's</a></li>
+                    <li><a href="./login.html">Sign Out</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    {% for vehicle in vehicles %}
+    <div class="card">
+        <div class="cover">
+            <img src="../static/image.jpg">
+        </div>
+        <div class="details">
+            <div>
+                <h3>{{ vehicle['vehicle_name'] }}</h3>
+                <p>{{ vehicle['seats'] }} seats</p>
+                <p>{{ vehicle['quantity'] }} Available</p>
+                <h2>Rupees {{ vehicle['pkm'] }} per km</h2>
+                <form action="/vehicle-selection" method="POST">
+                    <input hidden type="text" name="vehicle_id" value="{{ vehicle['vehicle_id'] }}">
+                    <input type="text" name="date" value="{{ booking_details['Date'] }}" hidden>
+                    <input type="text" name="time" value="{{ booking_details['Time'] }}" hidden>
+                    <input type="text" name="pickup" value="{{ booking_details['Pickup'] }}" hidden>
+                    <input type="text" name="drop" value="{{ booking_details['Drop'] }}" hidden>
+                    <input type="text" name="vehicle_name" value="{{ vehicle['vehicle_name'] }}" hidden>
+                    <input type="submit" value="Book Now">
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | FCRS</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.hist.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.navbar.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav>
+            <input type="checkbox" id="show-search">
+            <input type="checkbox" id="show-menu">
+            <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+            <div class="content">
+                <div class="logo"><img src="../static/logo.png"><a>FCRS</a></div>
+                <ul class="links">
+                    <li><a href="./admin_index.html">Dashboard</a></li>
+                    <li><a href="./manage_bookings.html">Manage Bookings</a></li>
+                    <li><a href="./manage_vehicles.html">Manage Vehicles</a></li>
+                    <li><a href="./login.html">Sign Out</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="main">
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">{{ book_count }}</div>
+                        <div class="cardName">Bookings</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="book-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">{{ Payments_Pending }}</div>
+                        <div class="cardName">Pending Payments</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">{{ vehicle_count }}</div>
+                        <div class="cardName">Garage</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="car-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">₹{{ amount_collected }}</div>
+                        <div class="cardName">Revenue</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="cash-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Recent Orders</h2>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Pickup</td>
+                                <td>Drop</td>
+                                <td>Date</td>
+                                <td>Time</td>
+                                <td>Status</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for booking in all_bookings %}
+                            <tr>
+                                <td>{{ booking['name'] }}</td>
+                                <td>{{ booking['Pickup'] }}</td>
+                                <td>{{ booking['Drop'] }}</td>
+                                <td>{{ booking['Date'] }}</td>
+                                <td>{{ booking['Time'] }}</td>
+                                <td><span class="status delivering">{{ booking['Status'] }}</span></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="recentCustomers">
+                    <div class="cardHeader">
+                        <h2>Recent Customers</h2>
+                    </div>
+                    <table>
+                        {% for customer in customers %}
+                        <tr>
+                            <td>
+                                <h4>{{ customer }}</h4>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        let toggle = document.querySelector('.toggle');
+        let navigation = document.querySelector('.navigation');
+        let main = document.querySelector('.main');
+        toggle.onclick = function () {
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+        let list = document.querySelectorAll('.navigation li');
+        function activeLink() {
+            list.forEach((item) =>
+                item.classList.remove('hovered'));
+            this.classList.add('hovered');
+        }
+        list.forEach((item) =>
+            item.addEventListener('mouseover', activeLink));
+    </script>
+</body>
+
+</html>

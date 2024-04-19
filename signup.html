@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Signup | FCRS</title>
+    <link rel="stylesheet" href="../static/style.signup.css">
+</head>
+
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+
+<body>
+
+    <div class="center">
+        <h1>Signup</h1>
+
+        <form action="/signup" method="post">
+            <div class="txt_field">
+                <input name="username" type="text" required>
+                <span></span>
+                <label>Username</label>
+            </div>
+            <div class="txt_field">
+                <input name="email" type="text" required>
+                <span></span>
+                <label>E-mail</label>
+            </div>
+            <div class="txt_field">
+                <input name="password" type="password" minlength="6" maxlength="15" required>
+                <span></span>
+                <label>Password</label>
+            </div>
+            <div class="txt_field">
+                <input name="confirm-pass" type="password" minlength="6" maxlength="15" required>
+                <span></span>
+                <label>Confirm Password</label>
+            </div>
+            <div class="txt_field">
+                <input id="dob" name="dob" type="date" value="2022-11-11" required>
+                <span></span>
+                <label>DOB</label>
+            </div>
+            <div class="txt_field">
+                <input name="dl" type="text" maxlength="15" required>
+                <span></span>
+                <label>DL Number</label>
+            </div>
+            <div class="txt_field">
+                <input name="aadhaar" type="number" required>
+                <span></span>
+                <label>Aadhaar Number</label>
+            </div>
+            <input type="number" hidden id="date" name="date" value="1">
+            <input type="number" hidden id="month" name="month" value="1">
+            <input type="number" hidden id="year" name="year" value="1">
+            <a href="./login.html" type="submit" class="btn">Submit</button></a>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("date").setAttribute("value", new Date().getDate());
+        document.getElementById("month").setAttribute("value", new Date().getMonth() + 1);
+        document.getElementById("year").setAttribute("value", new Date().getFullYear());
+    </script>
+
+</body>
+
+</html>

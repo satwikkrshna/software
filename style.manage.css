@@ -1,0 +1,80 @@
+:root {
+    --red: linear-gradient(to right, #de5212, #df6e11);
+    --white: #fff;
+    --grey: #b1a8a2;
+    --black1: #222;
+    --black2: #999;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: url("wall.jpg");
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.main {
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    min-height: 100vh;
+    transition: 0.5s;
+}
+
+.main.active {
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+.card_data {
+    width: 200px;
+    height: 230px;
+    display: grid;
+    border-radius: 10px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px 15px;
+    background-image: url("image.jpg");
+    background-position: center;
+    background-position: cover;
+}
+
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+}
+
+.cardBox .card {
+    position: relative;
+    color: #aba29e;
+    font-weight: 600;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.form {
+    width: 800px;
+    height: 500px;
+    background-image: #fff;
+    ;
+    background-size: cover;
+    position: relative;
+    left: 75px;
+    transform: translate(0%, -5%);
+    border-radius: 10px;
+    padding: 25px;
+}
